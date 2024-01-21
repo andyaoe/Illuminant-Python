@@ -13,17 +13,13 @@ def main(argv):
         print ('Usage: hough_circle.py [image_name -- default ' + default_file + '] \n')
         return -1
     
-    
-    gray = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
-    
-    
-    gray = cv.medianBlur(gray, 5)
-    
-    
-    rows = gray.shape[0]
-    circles = cv.HoughCircles(gray, cv.HOUGH_GRADIENT, 1, rows / 8,
-                               param1=100, param2=30,
-                               minRadius=1, maxRadius=30)
+    gray_image = cv.cvtColor(src, cv.COLOR_BGR2GRAY)
+
+    gray_image = cv.medianBlur(gray_image, 5)
+    rows = gray_image.shape[0]
+    circles = cv.HoughCircles(gray_image, cv.HOUGH_GRADIENT, 1, 5,
+                               param1=255, param2=15,
+                               minRadius=10, maxRadius=25)
     
     
     if circles is not None:
