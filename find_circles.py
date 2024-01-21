@@ -19,13 +19,14 @@ def main(argv):
     rows = gray_image.shape[0]
     circles = cv.HoughCircles(gray_image, cv.HOUGH_GRADIENT, 1, 5,
                                param1=255, param2=15,
-                               minRadius=10, maxRadius=25)
+                               minRadius=10, maxRadius=15)
     
     
     if circles is not None:
         circles = np.uint16(np.around(circles))
         for i in circles[0, :]:
             center = (i[0], i[1])
+            print (i[0],i[1])
             # circle center
             cv.circle(src, center, 1, (0, 100, 100), 3)
             # circle outline
